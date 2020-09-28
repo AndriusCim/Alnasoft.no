@@ -1,0 +1,60 @@
+@import "../styles/variables.scss";
+
+.alna-button {
+    cursor: pointer;
+    padding: 14px 0;
+    width: 186px;
+    background-color: black;
+    font-family: "Montserrat";
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+    border: none;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+        width: 188px;
+        border: 2px solid white;
+        outline: 1px solid black;
+        transition: all 0.2s;
+    }
+
+    &-disabled {
+        cursor: default;
+        padding: 14px 0;
+        width: 186px;
+        background-color: $alna-dark-gray;
+        font-family: "Montserrat";
+        color: white;
+        font-size: 15px;
+        font-weight: 500;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.alna-button-secondary {
+    cursor: pointer;
+    padding: 14px 0;
+    width: 186px;
+    background-color: transparent;
+    font-family: "Montserrat";
+    color: $alna-dark-gray;
+    font-size: 15px;
+    font-weight: 500;
+    border: none;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+        color: $alna-blue;
+        transition: all 0.2s;
+    }
+}

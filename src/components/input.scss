@@ -1,0 +1,19 @@
+@import "../styles/variables.scss";
+
+input[type=text], .alna-input {
+    width: 100%;
+    font-family: "Montserrat";
+    text-align: center;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid black;
+    transition: $alna-transition;
+
+    &:hover {
+        border-bottom: 1px solid $alna-blue;
+    }
+
+    &:focus {
+        border-bottom: 1px solid $alna-blue;
+    }
+}

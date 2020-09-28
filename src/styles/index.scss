@@ -1,0 +1,53 @@
+@import './variables.scss';
+
+body {
+    margin: 0 !important;
+    font-family: 'Montserrat' !important;
+}
+
+.alna-font-size-md {
+    font-size: 15px;
+}
+
+.alna-mt-20 {
+    margin-top: 20px;
+}
+
+.alna-mt-24 {
+    margin-top: 24px;
+}
+
+.alna-ml-30 {
+    margin-left: 30px;
+}
+
+.alna-mr-30 {
+    margin-right: 30px;
+}
+.alna-footer {
+    margin-top: 60px;
+    display: flex;
+}
+
+.alna-check-button-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 735px;
+}
+
+.alna-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 84px 20% 0 20%;
+}
+
+@media (max-width: $screen-md-min) {
+    .alna-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0;
+    }
+}

@@ -1,0 +1,56 @@
+@import '../styles/variables.scss';
+
+.alna-slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 2px;
+    background: $alna-blue;
+    outline: none;
+    -webkit-transition: 0.2s;
+    transition: $alna-transition;
+
+    &-container {
+        max-width: 421px;
+        width: 100%;
+    }
+
+    &-text {
+        display: flex;
+        justify-content: space-between;
+        font-weight: 500;
+    }
+
+    &::-webkit-slider-thumb:hover {
+        background: $alna-blue;
+    }
+
+    &::-moz-range-thumb:hover {
+        background: $alna-blue;
+    }
+
+    &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 28px;
+        height: 28px;
+        background: #fff;
+        border: 2px solid $alna-blue;
+        border-radius: 50%;
+        box-shadow: 0px 3px 6px $alna-dark-blue;
+        cursor: pointer;
+        -webkit-transition: 0.2s;
+        transition: $alna-transition;
+    }
+
+    &::-moz-range-thumb {
+        width: 28px;
+        height: 28px;
+        background: #fff;
+        border-radius: 50%;
+        border: 2px solid $alna-blue;
+        box-shadow: 0px 3px 6px $alna-dark-blue;
+        cursor: pointer;
+        -webkit-transition: 0.2s;
+        transition: $alna-transition;
+    }
+}

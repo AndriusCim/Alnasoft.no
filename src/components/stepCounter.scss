@@ -1,0 +1,23 @@
+@import '../styles/variables.scss';
+
+.alna-step-counter {
+    position: relative;
+    width: 79px;
+
+    &-main {
+        font-size: 65px;
+        font-weight: 500;
+        color: $alna-light-gray;
+    }
+
+    &-current {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        white-space: nowrap;
+        font-size: 15px;
+        font-weight: bold;
+        color: $alna-gray;
+    }
+}
