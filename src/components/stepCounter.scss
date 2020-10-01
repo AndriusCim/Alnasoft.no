@@ -1,6 +1,8 @@
 @import '../styles/variables.scss';
 
 .alna-step-counter {
+    display: flex;
+    justify-content: center;
     position: relative;
     width: 79px;
 

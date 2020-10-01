@@ -1,53 +1,99 @@
-@import './variables.scss';
+@import "./variables.scss";
 
 body {
-    margin: 0 !important;
-    font-family: 'Montserrat' !important;
+  margin: 0 !important;
+  font-family: "Montserrat" !important;
+}
+
+.alna-width-80 {
+  margin: 0 10px;
+  width: 100%;
+  max-width: 80%;
 }
 
 .alna-font-size-md {
-    font-size: 15px;
+  font-size: 15px;
 }
 
 .alna-mt-20 {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 .alna-mt-24 {
-    margin-top: 24px;
+  margin-top: 24px;
 }
 
 .alna-ml-30 {
-    margin-left: 30px;
+  margin-left: 30px;
 }
 
 .alna-mr-30 {
-    margin-right: 30px;
+  margin-right: 30px;
 }
 .alna-footer {
-    margin-top: 60px;
-    display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 60px;
+  display: flex;
+}
+
+.alna-text-align-left {
+  text-align: left !important;
+}
+
+.alna-center {
+  display: flex;
+  justify-content: center;
 }
 
 .alna-check-button-group {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    max-width: 735px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 735px;
 }
 
 .alna-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 84px 20% 0 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 84px 20% 0 20%;
+}
+
+.spinner {
+  color: $alna-blue;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50px;
+  height: 50px;
+  margin: -60px 0 0 -60px;
+  -webkit-animation: spin 4s linear infinite;
+  -moz-animation: spin 4s linear infinite;
+  animation: spin 4s linear infinite;
+}
+@-moz-keyframes spin {
+  100% {
+    -moz-transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
 }
 
 @media (max-width: $screen-md-min) {
-    .alna-form {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: 0;
-    }
+  .alna-form {
+    margin: 0 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }

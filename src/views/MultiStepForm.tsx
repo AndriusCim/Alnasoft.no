@@ -1,4 +1,5 @@
 import React from 'react';
+import { ImSpinner8 } from 'react-icons/im';
 
 import NameForm from './NameForm';
 import ExperienceForm from './ExperienceForm';
@@ -11,52 +12,63 @@ import DetailsForm from './DetailsForm';
 import TechnologiesForm from './TechnologiesForm';
 import ContactForm from './ContactForm';
 import Complete from './Complete';
-import { FormSteps, useQuickStartForm } from '../hooks/useQuickStartForm';
+import { useQuickStartForm } from '../hooks/useQuickStartForm';
+import { PageType, Data, FormSteps } from '../api/form';
 
 const MultiStepForm: React.FC = () => {
-    const { value, currentStep, change, setCurrentStep } = useQuickStartForm()
+  const { value, loading, data, currentStep, onSubmit, change, setCurrentStep } = useQuickStartForm()
 
-    const props = (previousStep: FormSteps, nextStep: FormSteps) => {
-        return {
-            value,
-            onChange: change,
-            onNextStep: () => setCurrentStep(nextStep),
-            onPreviousStep: () => setCurrentStep(previousStep)
-        }
-    }
+  const getPageData = (pageType: PageType, items: Data) => {
+    return items.pages.find(x => x.pageType === pageType)
+  }
 
-    switch (currentStep) {
-        case 'name':
-            return (
-                <NameForm
-                    value={value}
-                    onChange={change}
-                    onNextStep={() => setCurrentStep('experience')}
-                />
-            );
-        case 'experience':
-            return <ExperienceForm {...props('name', 'challenge')} />;
-        case 'challenge':
-            return <ChallengeForm {...props('experience', 'business')} />;
-        case 'business':
-            return <BusinessAreaForm {...props('challenge', 'overcome')} />
-        case 'overcome':
-            return <OvercomeForm {...props('business', 'goal')} />;
-        case 'goal':
-            return <GoalForm {...props('overcome', 'solution')} />;
-        case 'solution':
-            return <PerfectSolutionForm {...props('goal', 'details')} />;
-        case 'details':
-            return <DetailsForm {...props('solution', 'technologies')} />;
-        case 'technologies':
-            return <TechnologiesForm {...props('details', 'contact')} />;
-        case 'contact':
-            return <ContactForm {...props('technologies', 'complete')} />;
-        case 'complete':
-            return <Complete />;
-        default:
-            return null;
+  const props = (previousStep: FormSteps, nextStep: FormSteps, page: PageType, items: Data) => {
+    return {
+      value,
+      pageData: getPageData(page, items)!,
+      metaData: items.meta,
+      onChange: change,
+      onNextStep: () => setCurrentStep(nextStep),
+      onPreviousStep: () => setCurrentStep(previousStep)
     }
+  }
+  if (!data || loading) {
+    return <ImSpinner8 className="spinner" />
+  }
+  switch (currentStep) {
+    case 'name':
+      return (
+        <NameForm
+          pageData={getPageData('name', data)!}
+          metaData={data.meta}
+          value={value}
+          onChange={change}
+          onNextStep={() => setCurrentStep('experience')}
+        />
+      );
+    case 'experience':
+      return <ExperienceForm {...props('name', 'challenge', 'experience', data)} />;
+    case 'challenge':
+      return <ChallengeForm {...props('experience', 'business', 'challenge', data)} />;
+    case 'business':
+      return <BusinessAreaForm {...props('challenge', 'overcome', 'business', data)} />
+    case 'overcome':
+      return <OvercomeForm {...props('business', 'goal', 'overcome', data)} />;
+    case 'goal':
+      return <GoalForm {...props('overcome', 'solution', 'goal', data)} />;
+    case 'solution':
+      return <PerfectSolutionForm {...props('goal', 'details', 'solution', data)} />;
+    case 'details':
+      return <DetailsForm {...props('solution', 'technologies', 'details', data)} />;
+    case 'technologies':
+      return <TechnologiesForm {...props('details', 'contact', 'technologies', data)} />;
+    case 'contact':
+      return <ContactForm onSubmit={onSubmit} {...props('technologies', 'complete', 'contact', data)} />;
+    case 'complete':
+      return <Complete pageData={getPageData('complete', data)!} metaData={data.meta} />;
+    default:
+      return null;
+  }
 };
 
 export default MultiStepForm;

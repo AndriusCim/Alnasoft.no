@@ -1,29 +1,27 @@
 import React from 'react';
 import { BsArrowRight, BsArrowLeft } from 'react-icons/bs';
 
+import { Meta, Page, FormData } from '../api/form';
 import Button from '../components/Button';
 import Carousel from '../components/Carousel';
 import Input from '../components/Input';
 import Summary from '../components/Summary';
 import StepCounter from '../components/StepCounter';
-import { FormData } from '../hooks/useQuickStartForm';
 
 interface Props {
+  pageData: Page;
+  metaData: Meta;
   value: FormData;
   onChange: <K extends keyof FormData>(name: K, value: FormData[K]) => void
   onNextStep: () => void;
   onPreviousStep: () => void;
 }
 
-const carouselDescriptions = [
-  'E.g. I have a project and need development team to implement it. Project is related to tracking of goods and providing that information real time to customers.',
-  'Project is related to tracking of goods and providing that information real time to customers.'
-]
-
-const ChallengeForm: React.FC<Props> = ({ value, onChange, onNextStep, onPreviousStep }) => {
+const ChallengeForm: React.FC<Props> = ({ pageData, metaData, value, onChange, onNextStep, onPreviousStep }) => {
   return (
     <div className="alna-form alna-mt-84">
       <StepCounter
+        title={metaData.paginationText}
         max="10"
         current="03"
       />
@@ -32,20 +30,20 @@ const ChallengeForm: React.FC<Props> = ({ value, onChange, onNextStep, onPreviou
 
       <Summary
         className="alna-mt-20"
-        subTitle="Great!"
-        title="Let's talk about your challenges"
+        subTitle={pageData.upperTitle}
+        title={pageData.title}
         shadowLeft={200}
         shadowWidth={50}
       />
 
       <Input
         value={value.challenges}
-        className="alna-mt-24"
-        placeHolder="Describe the challenge you are facing"
+        className="alna-mt-24 alna-width-80 alna-center"
+        placeHolder={pageData.field.placeholder}
         onChange={x => onChange('challenges', x)}
       />
 
-      <Carousel className="alna-mt-20" descriptions={carouselDescriptions} />
+      <Carousel className="alna-mt-20" descriptions={pageData.field.examples} />
 
       <div className="alna-footer">
         <Button
@@ -53,12 +51,12 @@ const ChallengeForm: React.FC<Props> = ({ value, onChange, onNextStep, onPreviou
           onClick={onPreviousStep}
         >
           <BsArrowLeft className="alna-mr-30" size={20} />
-          Previous
-          </Button>
+          {metaData.prevButtonText}
+        </Button>
         <Button
           onClick={onNextStep}
         >
-          Next
+          {metaData.nexTButtonText}
           <BsArrowRight className="alna-ml-30" size={20} />
         </Button>
       </div>

@@ -1,87 +1,111 @@
 import React from 'react';
 import { BsArrowRight, BsArrowLeft } from 'react-icons/bs';
 
+import { Meta, Page, FormData } from '../api/form';
 import Button from '../components/Button';
 import Slider from '../components/Slider';
 import Summary from '../components/Summary';
 import StepCounter from '../components/StepCounter';
-import { FormData } from '../hooks/useQuickStartForm';
+import { getSliderByValue } from '../hooks/useQuickStartForm';
 
 interface Props {
+  pageData: Page;
+  metaData: Meta;
   value: FormData;
   onChange: <K extends keyof FormData>(name: K, value: FormData[K]) => void
   onNextStep: () => void;
   onPreviousStep: () => void;
 }
 
-const ExperienceForm: React.FC<Props> = ({ value, onChange, onNextStep, onPreviousStep }) => {
+const ExperienceForm: React.FC<Props> = ({ pageData, metaData, value, onChange, onNextStep, onPreviousStep }) => {
 
   return (
     <div className="alna-form alna-mt-84">
       <StepCounter
+        title={metaData.paginationText}
         max="10"
         current="08"
       />
 
       <Summary
         className="alna-mt-20"
-        subTitle="Just a few more details"
+        subTitle={pageData.upperTitle}
       />
+      {getSliderByValue('timeline', pageData) && (
+        <>
+          <Summary
+            className="alna-mt-20"
+            title={getSliderByValue('timeline', pageData)!.title}
+          />
 
-      <Summary
-        className="alna-mt-20"
-        title="Timeline"
-      />
+          <Slider
+            value={value.details.timeline}
+            className="alna-mt-24"
+            min={1}
+            max={12}
+            minText={getSliderByValue('timeline', pageData)!.sliders[0].start}
+            maxText={getSliderByValue('timeline', pageData)!.sliders[0].finish}
+            onChange={x => onChange('details', { ...value.details, timeline: x })}
+          />
+        </>
+      )}
 
-      <Slider
-        value={value.details.timeline}
-        className="alna-mt-24"
-        min={1}
-        max={12}
-        minText="Yesterday"
-        maxText="12 months"
-        onChange={x => onChange('details', { ...value.details, timeline: x })}
-      />
+      {getSliderByValue('users', pageData) && (
+        <>
+          <Summary
+            className="alna-mt-20"
+            title={getSliderByValue('users', pageData)!.title}
+          />
 
-      <Summary
-        className="alna-mt-20"
-        title="Number of users"
-      />
+          <Slider
+            value={value.details.users}
+            className="alna-mt-24"
+            min={49}
+            max={5001}
+            minText={getSliderByValue('users', pageData)!.sliders[0].start}
+            maxText={getSliderByValue('users', pageData)!.sliders[0].finish}
+            onChange={x => onChange('details', { ...value.details, users: x })}
+          />
+        </>
+      )}
 
-      <Slider
-        value={value.details.users}
-        className="alna-mt-24"
-        min={49}
-        max={5001}
-        minText="> 50"
-        maxText="5000 <"
-        onChange={x => onChange('details', { ...value.details, users: x })}
-      />
+      {getSliderByValue('budget', pageData) && (
+        <>
+          <Summary
+            className="alna-mt-20"
+            title={getSliderByValue('budget', pageData)!.title}
+          />
 
-      <Summary
-        className="alna-mt-20"
-        title="Complexity"
-      />
+          <Slider
+            value={value.details.budget}
+            className="alna-mt-24"
+            min={29000}
+            max={100001}
+            minText={getSliderByValue('budget', pageData)!.sliders[0].start}
+            maxText={getSliderByValue('budget', pageData)!.sliders[0].finish}
+            onChange={x => onChange('details', { ...value.details, budget: x })}
+          />
+        </>
+      )}
 
-      <Slider
-        value={value.details.budget}
-        className="alna-mt-24"
-        min={29000}
-        max={100001}
-        minText="< 30k"
-        maxText="100k+"
-        onChange={x => onChange('details', { ...value.details, budget: x })}
-      />
+      {getSliderByValue('complexity', pageData) && (
+        <>
+          <Summary
+            className="alna-mt-20"
+            title={getSliderByValue('complexity', pageData)!.title}
+          />
 
-      <Slider
-        value={value.details.complexity}
-        className="alna-mt-24"
-        min={0}
-        max={100}
-        minText="simple"
-        maxText="Very complex"
-        onChange={x => onChange('details', { ...value.details, complexity: x })}
-      />
+          <Slider
+            value={value.details.complexity}
+            className="alna-mt-24"
+            min={0}
+            max={100}
+            minText={getSliderByValue('complexity', pageData)!.sliders[0].start}
+            maxText={getSliderByValue('complexity', pageData)!.sliders[0].finish}
+            onChange={x => onChange('details', { ...value.details, complexity: x })}
+          />
+        </>
+      )}
 
       <div className="alna-footer">
         <Button
@@ -89,13 +113,13 @@ const ExperienceForm: React.FC<Props> = ({ value, onChange, onNextStep, onPrevio
           onClick={onPreviousStep}
         >
           <BsArrowLeft className="alna-mr-30" size={20} />
-          Previous
-          </Button>
+          {metaData.prevButtonText}
+        </Button>
 
         <Button
           onClick={onNextStep}
         >
-          Next
+          {metaData.nexTButtonText}
           <BsArrowRight className="alna-ml-30" size={20} />
         </Button>
       </div>

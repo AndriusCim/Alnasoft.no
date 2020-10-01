@@ -1,24 +1,27 @@
 import React from 'react';
 import { BsArrowRight, BsArrowLeft } from 'react-icons/bs';
 
+import { Meta, Page, FormData } from '../api/form';
 import Button from '../components/Button';
 import Slider from '../components/Slider';
 import Summary from '../components/Summary';
 import StepCounter from '../components/StepCounter';
-import { FormData } from '../hooks/useQuickStartForm';
 
 interface Props {
+  pageData: Page;
+  metaData: Meta;
   value: FormData;
   onChange: <K extends keyof FormData>(name: K, value: FormData[K]) => void
   onNextStep: () => void;
   onPreviousStep: () => void;
 }
 
-const ExperienceForm: React.FC<Props> = ({ value, onChange, onNextStep, onPreviousStep }) => {
+const ExperienceForm: React.FC<Props> = ({ pageData, metaData, value, onChange, onNextStep, onPreviousStep }) => {
 
   return (
     <div className="alna-form alna-mt-84">
       <StepCounter
+        title={metaData.paginationText}
         max="10"
         current="02"
       />
@@ -27,8 +30,8 @@ const ExperienceForm: React.FC<Props> = ({ value, onChange, onNextStep, onPrevio
 
       <Summary
         className="alna-mt-20"
-        subTitle={`Nice to meet you, ${value.firstName}!`}
-        title="How much experience do you have working with IT projects?"
+        subTitle={`${pageData.upperTitle} ${value.firstName}!`}
+        title={pageData.title}
         shadowLeft={520}
         shadowWidth={120}
       />
@@ -49,13 +52,13 @@ const ExperienceForm: React.FC<Props> = ({ value, onChange, onNextStep, onPrevio
           onClick={onPreviousStep}
         >
           <BsArrowLeft className="alna-mr-30" size={20} />
-          Previous
+          {metaData.prevButtonText}
           </Button>
 
         <Button
           onClick={onNextStep}
         >
-          Next
+          {metaData.nexTButtonText}
           <BsArrowRight className="alna-ml-30" size={20} />
         </Button>
       </div>

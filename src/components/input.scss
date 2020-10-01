@@ -1,19 +1,31 @@
 @import "../styles/variables.scss";
 
-input[type=text], .alna-input {
+.alna-input {
+  width: 100%;
+  max-width: 400px;
+  font-family: "Montserrat";
+  text-align: center;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid black;
+  transition: $alna-transition;
+
+  &-contact {
     width: 100%;
+    max-width: 400px;
     font-family: "Montserrat";
-    text-align: center;
+    text-align: left;
     outline: none;
     border: none;
     border-bottom: 1px solid black;
     transition: $alna-transition;
+  }
 
-    &:hover {
-        border-bottom: 1px solid $alna-blue;
-    }
+  &:hover {
+    border-bottom: 1px solid $alna-blue;
+  }
 
-    &:focus {
-        border-bottom: 1px solid $alna-blue;
-    }
+  &:focus {
+    border-bottom: 1px solid $alna-blue;
+  }
 }

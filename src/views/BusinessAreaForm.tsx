@@ -1,21 +1,23 @@
 import React from 'react';
 import { BsArrowRight, BsArrowLeft } from 'react-icons/bs';
 
+import { Meta, Page, FormData } from '../api/form';
 import Button from '../components/Button';
 import CheckButton from '../components/CheckButton';
 import Input from '../components/Input';
 import Summary from '../components/Summary';
 import StepCounter from '../components/StepCounter';
-import { FormData, businessAreas } from '../hooks/useQuickStartForm';
 
 interface Props {
+  pageData: Page;
+  metaData: Meta;
   value: FormData;
   onChange: <K extends keyof FormData>(name: K, value: FormData[K]) => void
   onNextStep: () => void;
   onPreviousStep: () => void;
 }
 
-const BusinessAreaForm: React.FC<Props> = ({ value, onChange, onNextStep, onPreviousStep }) => {
+const BusinessAreaForm: React.FC<Props> = ({ pageData, metaData, value, onChange, onNextStep, onPreviousStep }) => {
   const handleChange = (x: string, checked: boolean) => {
     const selected = checked
       ? [...value.businessArea, x]
@@ -27,6 +29,7 @@ const BusinessAreaForm: React.FC<Props> = ({ value, onChange, onNextStep, onPrev
   return (
     <div className="alna-form alna-mt-84">
       <StepCounter
+        title={metaData.paginationText}
         max="10"
         current="04"
       />
@@ -35,15 +38,15 @@ const BusinessAreaForm: React.FC<Props> = ({ value, onChange, onNextStep, onPrev
 
       <Summary
         className="alna-mt-20"
-        subTitle="Got it"
-        title="Which business area the challenge is related to?"
-        description="You can select multiple options"
+        subTitle={pageData.upperTitle}
+        title={pageData.title}
+        description={pageData.field.description}
         shadowLeft={200}
         shadowWidth={50}
       />
 
       <div className="alna-mt-24 alna-check-button-group">
-        {businessAreas.map((x, i) => (
+        {pageData.field.selections.map((x, i) => (
           <CheckButton
             key={i}
             value={x}
@@ -54,9 +57,9 @@ const BusinessAreaForm: React.FC<Props> = ({ value, onChange, onNextStep, onPrev
       </div>
 
       <Input
-        className="alna-mt-24"
-        placeHolder="Other business area"
-        onChange={x => onChange('businessArea', [...value.businessArea, x])}
+        className="alna-mt-24 alna-center"
+        placeHolder={pageData.field.otherSelection.placeholder}
+        onChange={x => onChange('otherBusinessArea', x)}
       />
 
       <div className="alna-footer">
@@ -65,12 +68,12 @@ const BusinessAreaForm: React.FC<Props> = ({ value, onChange, onNextStep, onPrev
           onClick={onPreviousStep}
         >
           <BsArrowLeft className="alna-mr-30" size={20} />
-          Previous
-          </Button>
+          {metaData.prevButtonText}
+        </Button>
         <Button
           onClick={onNextStep}
         >
-          Next
+          {metaData.nexTButtonText}
           <BsArrowRight className="alna-ml-30" size={20} />
         </Button>
       </div>

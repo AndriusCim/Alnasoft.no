@@ -20,7 +20,7 @@ const CheckButton: React.FC<Props> = ({ value, className = '', checked, onChange
                     type="checkbox"
                     onChange={x => onChange(x.target.checked)}
                 />
-                <span className="alna-check" data-on="Yes" data-off="No">{value}</span>
+                <span className="alna-check">{value}</span>
             </label>
         </div>
     );

@@ -1,92 +1,13 @@
 import { useState } from 'react';
 import { useForm } from 'react-hooks-helper';
-import { getFormData } from '../api/form';
-
-interface Resources {
-  timeline: number;
-  users: number;
-  budget: number;
-  complexity: number;
-}
-
-interface ContactInfo {
-  organizationName: string;
-  email: string;
-  phone: string;
-}
-
-export interface FormData {
-  firstName: string | undefined;
-  experience: number;
-  challenges: string | undefined;
-  businessArea: string[];
-  challengeOvercome: string | undefined;
-  goal: string | undefined;
-  solution: string | undefined;
-  details: Resources;
-  technologies: string[];
-  contactInfo: ContactInfo;
-}
-
-export type FormSteps =
-  'name' |
-  'experience' |
-  'challenge' |
-  'business' |
-  'overcome' |
-  'goal' |
-  'solution' |
-  'details' |
-  'technologies' |
-  'contact' |
-  'complete';
-
-export const technologies = [
-  'Linux',
-  'Azure',
-  'C#',
-  'JavaScript',
-  'React',
-  'Windows',
-  'Amazon Web Services',
-  '.NET',
-  'MySQL',
-  'TypeScript',
-  'Angular',
-  'Java',
-  'Microsoft SQL Server',
-  'PHP',
-  'Vue',
-  'Scrum',
-  'Power BI',
-  'Artificial Intelligence',
-  'Big Data',
-  'Consulting',
-  'IT Project Management'
-];
-
-export const businessAreas = [
-  'Logistics',
-  'Finance',
-  'Retail',
-  'IT Infrastructure',
-  'Procurement',
-  'Human resource',
-  'Marketing & Sales',
-  'Business administration & operations',
-  'Quality management',
-  'Business Intelligence',
-  'Risk Management',
-  'Compliance management',
-  'R&D',
-  'Other'
-]
+import { getData, postForm, PageType, FormData, Page } from '../api/form';
 
 const initialData: FormData = {
   firstName: '',
   experience: 70,
   challenges: '',
   businessArea: [],
+  otherBusinessArea: '',
   challengeOvercome: '',
   goal: '',
   solution: '',
@@ -104,15 +25,27 @@ const initialData: FormData = {
   }
 }
 
-export const useQuickStartForm = () => {
-  const [currentStep, setCurrentStep] = useState<FormSteps>('name');
-  const [value, setForm] = useForm<FormData>(initialData);
-  const { data } = getFormData();
+export const getFieldByValue = (value: string, item: Page) => {
+  return item.field.fields.find(x => x.value === value);
+}
 
-  console.log(data);
+export const getSliderByValue = (value: string, item: Page) => {
+  return item.field.sliderGroups.find(x => x.value === value);
+}
+
+export const useQuickStartForm = () => {
+  const [currentStep, setCurrentStep] = useState<PageType>('name');
+  const [value, setForm] = useForm<FormData>(initialData);
+  const { data, loading } = getData();
+  const {state, postData} = postForm();
+
   return {
+    loading,
+    submitting: state.loading,
     currentStep,
+    data,
     value,
+    onSubmit: postData,
     setCurrentStep,
     change: <K extends keyof FormData>(name: K, value: FormData[K]) => setForm({ target: { name: name, value: value } }),
   }

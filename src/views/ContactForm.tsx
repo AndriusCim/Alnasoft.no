@@ -1,24 +1,29 @@
 import React from 'react';
 import { BsArrowLeft } from 'react-icons/bs';
 
+import { Meta, Page, FormData } from '../api/form';
 import Button from '../components/Button';
 import Input from '../components/Input';
 import Summary from '../components/Summary';
 import StepCounter from '../components/StepCounter';
-import { FormData } from '../hooks/useQuickStartForm';
+import { getFieldByValue } from '../hooks/useQuickStartForm';
 
 interface Props {
+  pageData: Page;
+  metaData: Meta;
   value: FormData;
   onChange: <K extends keyof FormData>(name: K, value: FormData[K]) => void
+  onSubmit: (value: FormData, onFinish: () => void) => void;
   onNextStep: () => void;
   onPreviousStep: () => void;
 }
 
+const ContactForm: React.FC<Props> = ({ pageData, metaData, value, onChange, onSubmit, onNextStep, onPreviousStep }) => {
 
-const ContactForm: React.FC<Props> = ({ value, onChange, onNextStep, onPreviousStep }) => {
   return (
     <div className="alna-form alna-mt-84">
       <StepCounter
+        title={metaData.paginationText}
         max="10"
         current="10"
       />
@@ -27,32 +32,41 @@ const ContactForm: React.FC<Props> = ({ value, onChange, onNextStep, onPreviousS
 
       <Summary
         className="alna-mt-20"
-        subTitle={`${value.firstName}, how can we reach you?`}
-        title="Your contact information"
+        subTitle={`${value.firstName} ${pageData.upperTitle}`}
+        title={pageData.title}
         shadowLeft={200}
         shadowWidth={50}
       />
 
-      <Input
-        value={value.contactInfo.organizationName}
-        className="alna-mt-24"
-        placeHolder="Organization name"
-        onChange={x => onChange('contactInfo', { ...value.contactInfo, organizationName: x })}
-      />
+      {getFieldByValue('organizationName', pageData) && (
+        <Input
+          contact={true}
+          value={value.contactInfo.organizationName}
+          className="alna-mt-24 alna-width-80 alna-center"
+          placeHolder={getFieldByValue('organizationName', pageData)!.placeholder}
+          onChange={x => onChange('contactInfo', { ...value.contactInfo, organizationName: x })}
+        />
+      )}
 
-      <Input
-        value={value.contactInfo.email}
-        className="alna-mt-24"
-        placeHolder="Email"
-        onChange={x => onChange('contactInfo', { ...value.contactInfo, email: x })}
-      />
+      {getFieldByValue('email', pageData) && (
+        <Input
+          contact={true}
+          value={value.contactInfo.email}
+          className="alna-mt-24 alna-width-80 alna-center"
+          placeHolder={getFieldByValue('email', pageData)!.placeholder}
+          onChange={x => onChange('contactInfo', { ...value.contactInfo, email: x })}
+        />
+      )}
 
-      <Input
-        value={value.contactInfo.email}
-        className="alna-mt-24"
-        placeHolder="Phone"
-        onChange={x => onChange('contactInfo', { ...value.contactInfo, phone: x })}
-      />
+      {getFieldByValue('phone', pageData) && (
+        <Input
+          contact={true}
+          value={value.contactInfo.phone}
+          className="alna-mt-24 alna-width-80 alna-center"
+          placeHolder={getFieldByValue('phone', pageData)!.placeholder}
+          onChange={x => onChange('contactInfo', { ...value.contactInfo, phone: x })}
+        />
+      )}
 
       <div className="alna-footer">
         <Button
@@ -60,12 +74,12 @@ const ContactForm: React.FC<Props> = ({ value, onChange, onNextStep, onPreviousS
           onClick={onPreviousStep}
         >
           <BsArrowLeft className="alna-mr-30" size={20} />
-          Previous
-          </Button>
+          {metaData.prevButtonText}
+        </Button>
         <Button
-          onClick={onNextStep}
+          onClick={() => onSubmit(value, onNextStep)}
         >
-          Finish
+          {metaData.finishButtonText}
         </Button>
       </div>
     </div>

@@ -1,21 +1,24 @@
 @import "../styles/variables.scss";
 
 .alna-carousel {
-    display: flex;
-    
-    &-content {
-        width: 648px;
+  display: flex;
+  justify-content: center;
+
+  &-content {
+    color: $alna-dark-gray;
+    width: 80%;
     text-align: center;
     margin: 0 24px;
-    }
+    
+  }
 
-    &-arrow {
-        color: $alna-blue;
-        transition: $alna-transition;
-        cursor: pointer;
+  &-arrow {
+    color: $alna-blue;
+    transition: $alna-transition;
+    cursor: pointer;
 
-        &:hover {
-            color: $alna-dark-blue;
-        }
+    &:hover {
+      color: $alna-dark-blue;
     }
+  }
 }
