@@ -13,7 +13,7 @@ import TechnologiesForm from './TechnologiesForm';
 import ContactForm from './ContactForm';
 import Complete from './Complete';
 import { useQuickStartForm } from '../hooks/useQuickStartForm';
-import { PageType, Data, FormSteps } from '../api/form';
+import { PageType, Data } from '../api/form';
 
 const MultiStepForm: React.FC = () => {
   const { value, loading, data, currentStep, onSubmit, change, setCurrentStep } = useQuickStartForm()
@@ -22,7 +22,7 @@ const MultiStepForm: React.FC = () => {
     return items.pages.find(x => x.pageType === pageType)
   }
 
-  const props = (previousStep: FormSteps, nextStep: FormSteps, page: PageType, items: Data) => {
+  const props = (previousStep: PageType, nextStep: PageType, page: PageType, items: Data) => {
     return {
       value,
       pageData: getPageData(page, items)!,

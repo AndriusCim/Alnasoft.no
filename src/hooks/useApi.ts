@@ -13,6 +13,14 @@ const initialState = {
   error: null
 };
 
+const config = {
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  data: {},
+};
+
+
 export const useApiGet = <T>(url: string) => {
   const [state, setState] = useState<State<T>>(initialState);
 
@@ -53,7 +61,7 @@ export const useApiPost = <T>(url: string) => {
   const postData = async (body: T, onFinally: () => void) => {
     try {
       setState(prevState => ({ ...prevState, loading: true }));
-      const response = await axios.post(url, body);
+      const response = await axios.post(url, JSON.stringify(body), config);
       if (response.status === 200 && !signal.aborted) {
         setState(prevState => ({ ...prevState, data: response.data }));
       }

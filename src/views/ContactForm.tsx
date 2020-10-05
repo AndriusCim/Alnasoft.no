@@ -1,7 +1,7 @@
 import React from 'react';
 import { BsArrowLeft } from 'react-icons/bs';
 
-import { Meta, Page, FormData } from '../api/form';
+import { Meta, Page, FormData, mapFormDataToModel, FormDataDto } from '../api/form';
 import Button from '../components/Button';
 import Input from '../components/Input';
 import Summary from '../components/Summary';
@@ -13,7 +13,7 @@ interface Props {
   metaData: Meta;
   value: FormData;
   onChange: <K extends keyof FormData>(name: K, value: FormData[K]) => void
-  onSubmit: (value: FormData, onFinish: () => void) => void;
+  onSubmit: (value: FormDataDto, onFinish: () => void) => void;
   onNextStep: () => void;
   onPreviousStep: () => void;
 }
@@ -77,7 +77,7 @@ const ContactForm: React.FC<Props> = ({ pageData, metaData, value, onChange, onS
           {metaData.prevButtonText}
         </Button>
         <Button
-          onClick={() => onSubmit(value, onNextStep)}
+          onClick={() => onSubmit(mapFormDataToModel(value), onNextStep)}
         >
           {metaData.finishButtonText}
         </Button>

@@ -1,18 +1,5 @@
 import { useApiGet, useApiPost } from '../hooks/useApi';
 
-export type FormSteps =
-  'name' |
-  'experience' |
-  'challenge' |
-  'business' |
-  'overcome' |
-  'goal' |
-  'solution' |
-  'details' |
-  'technologies' |
-  'contact' |
-  'complete';
-
 export type PageType =
   'name' |
   'experience' |
@@ -38,21 +25,6 @@ interface ContactInfo {
   email: string;
   phone: string;
 }
-
-export interface FormData {
-  firstName: string | undefined;
-  experience: number;
-  challenges: string | undefined;
-  businessArea: string[];
-  otherBusinessArea: string;
-  challengeOvercome: string | undefined;
-  goal: string | undefined;
-  solution: string | undefined;
-  details: Resources;
-  technologies: string[];
-  contactInfo: ContactInfo;
-}
-
 
 export interface OtherSelection {
   placeholder: string;
@@ -109,9 +81,61 @@ export interface Data {
   meta: Meta;
 }
 
+export interface FormData {
+  firstName: string | undefined;
+  experience: number;
+  challenges: string | undefined;
+  businessArea: string[];
+  otherBusinessArea: string | undefined;
+  challengeOvercome: string | undefined;
+  goal: string | undefined;
+  solution: string | undefined;
+  details: Resources;
+  technologies: string[];
+  contactInfo: ContactInfo;
+}
+
+export interface FormDataDto {
+  firstName: string | undefined;
+  experience: number;
+  challenges: string | undefined;
+  businessArea: string;
+  otherBusinessArea: string | undefined;
+  challengeOvercome: string | undefined;
+  goal: string | undefined;
+  solution: string | undefined;
+  detailsTimeline: number;
+  detailsUsers: number;
+  detailsBudget: number;
+  detailsComplexity: number;
+  technologies: string | undefined;
+  organizationName: string;
+  email: string;
+  phone: string;
+}
+
+export const mapFormDataToModel = (x: FormData): FormDataDto => ({
+  firstName: x.firstName,
+  experience: x.experience,
+  challenges: x.challenges,
+  businessArea: x.businessArea.join(', ') || '',
+  otherBusinessArea: x.otherBusinessArea,
+  challengeOvercome: x.challengeOvercome,
+  goal: x.goal,
+  solution: x.solution,
+  detailsTimeline: x.details.timeline,
+  detailsBudget: x.details.budget,
+  detailsUsers: x.details.users,
+  detailsComplexity: x.details.complexity,
+  technologies: x.technologies.join(', ') || '',
+  organizationName: x.contactInfo.organizationName,
+  email: x.contactInfo.email,
+  phone: x.contactInfo.phone
+});
+
 export const postForm = () => {
   const url = 'http://localhost/wp-json/contact-form-7/v1/contact-forms/358/feedback';
-  const { state, postData } = useApiPost<FormData>(url);
+  const { state, postData } = useApiPost<FormDataDto>(url);
 
   return {
     state,
