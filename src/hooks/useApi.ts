@@ -15,7 +15,7 @@ const initialState = {
 
 const config = {
   headers: {
-    'Content-Type': 'application/json',
+    'Content-Type': 'multipart/form-data',
   },
   data: {},
 };
@@ -59,9 +59,15 @@ export const useApiPost = <T>(url: string) => {
   const abortController = new AbortController();
   const signal = abortController.signal;
   const postData = async (body: T, onFinally: () => void) => {
+    let myData: FormData = new FormData();
+
+    for (const property in body) {
+      myData.append(property, JSON.stringify(body[property]));
+    };
+
     try {
       setState(prevState => ({ ...prevState, loading: true }));
-      const response = await axios.post(url, JSON.stringify(body), config);
+      const response = await axios.post(url, myData, config);
       if (response.status === 200 && !signal.aborted) {
         setState(prevState => ({ ...prevState, data: response.data }));
       }

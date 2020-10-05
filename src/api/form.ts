@@ -134,7 +134,7 @@ export const mapFormDataToModel = (x: FormData): FormDataDto => ({
 });
 
 export const postForm = () => {
-  const url = 'http://localhost/wp-json/contact-form-7/v1/contact-forms/358/feedback';
+  const url = '/wp-json/contact-form-7/v1/contact-forms/692/feedback';
   const { state, postData } = useApiPost<FormDataDto>(url);
 
   return {
@@ -144,7 +144,7 @@ export const postForm = () => {
 }
 
 export const getData = () => {
-  const url = 'http://localhost/wp-json/form/form_fields';
+  const url = '/wp-json/form/form_fields';
   const { data, loading, error } = useApiGet<Data>(url);
 
   return {

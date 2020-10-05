@@ -15,7 +15,7 @@ interface Props {
   onNextStep: () => void;
 }
 
-const ExperienceForm: React.FC<Props> = ({ pageData, metaData, value, onChange, onNextStep }) => {
+const NameForm: React.FC<Props> = ({ pageData, metaData, value, onChange, onNextStep }) => {
   return (
     <div className="alna-form alna-mt-84">
       <StepCounter
@@ -54,4 +54,4 @@ const ExperienceForm: React.FC<Props> = ({ pageData, metaData, value, onChange, 
   );
 };
 
-export default ExperienceForm;
+export default NameForm;
