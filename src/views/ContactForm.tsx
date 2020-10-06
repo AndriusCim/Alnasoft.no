@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BsArrowLeft } from 'react-icons/bs';
 
 import { Meta, Page, FormData, mapFormDataToModel, FormDataDto } from '../api/form';
@@ -7,6 +7,7 @@ import Input from '../components/Input';
 import Summary from '../components/Summary';
 import StepCounter from '../components/StepCounter';
 import { getFieldByValue } from '../hooks/useQuickStartForm';
+import { useValidation } from '../hooks/useValidation';
 
 interface Props {
   pageData: Page;
@@ -19,6 +20,8 @@ interface Props {
 }
 
 const ContactForm: React.FC<Props> = ({ pageData, metaData, value, onChange, onSubmit, onNextStep, onPreviousStep }) => {
+  const [anyTouched, setAnyTouched] = useState(false);
+  const errors = useValidation(value);
 
   return (
     <div className="alna-form alna-mt-84">
@@ -39,33 +42,51 @@ const ContactForm: React.FC<Props> = ({ pageData, metaData, value, onChange, onS
       />
 
       {getFieldByValue('organizationName', pageData) && (
-        <Input
-          contact={true}
-          value={value.contactInfo.organizationName}
-          className="alna-mt-24 alna-width-80 alna-center"
-          placeHolder={getFieldByValue('organizationName', pageData)!.placeholder}
-          onChange={x => onChange('contactInfo', { ...value.contactInfo, organizationName: x })}
-        />
+        <>
+          <Input
+            contact={true}
+            value={value.contactInfo.organizationName}
+            className="alna-mt-24 alna-width-80 alna-center"
+            placeHolder={getFieldByValue('organizationName', pageData)!.placeholder}
+            onChange={x => {
+              onChange('contactInfo', { ...value.contactInfo, organizationName: x });
+              setAnyTouched(true);
+            }}
+          />
+          {anyTouched && errors && errors.organizationName && <div className="alna-form-error">{errors.organizationName}</div>}
+        </>
       )}
 
       {getFieldByValue('email', pageData) && (
-        <Input
-          contact={true}
-          value={value.contactInfo.email}
-          className="alna-mt-24 alna-width-80 alna-center"
-          placeHolder={getFieldByValue('email', pageData)!.placeholder}
-          onChange={x => onChange('contactInfo', { ...value.contactInfo, email: x })}
-        />
+        <>
+          <Input
+            contact={true}
+            value={value.contactInfo.email}
+            className="alna-mt-24 alna-width-80 alna-center"
+            placeHolder={getFieldByValue('email', pageData)!.placeholder}
+            onChange={x => {
+              onChange('contactInfo', { ...value.contactInfo, email: x });
+              setAnyTouched(true);
+            }}
+          />
+          {anyTouched && errors && errors.email && <div className="alna-form-error">{errors.email}</div>}
+        </>
       )}
 
       {getFieldByValue('phone', pageData) && (
-        <Input
-          contact={true}
-          value={value.contactInfo.phone}
-          className="alna-mt-24 alna-width-80 alna-center"
-          placeHolder={getFieldByValue('phone', pageData)!.placeholder}
-          onChange={x => onChange('contactInfo', { ...value.contactInfo, phone: x })}
-        />
+        <>
+          <Input
+            contact={true}
+            value={value.contactInfo.phone}
+            className="alna-mt-24 alna-width-80 alna-center"
+            placeHolder={getFieldByValue('phone', pageData)!.placeholder}
+            onChange={x => {
+              onChange('contactInfo', { ...value.contactInfo, phone: x });
+              setAnyTouched(true);
+            }}
+          />
+          {anyTouched && errors && errors.phone && <div className="alna-form-error">{errors.phone}</div>}
+        </>
       )}
 
       <div className="alna-footer">
@@ -77,6 +98,7 @@ const ContactForm: React.FC<Props> = ({ pageData, metaData, value, onChange, onS
           {metaData.prevButtonText}
         </Button>
         <Button
+          disabled={!!errors}
           onClick={() => onSubmit(mapFormDataToModel(value), onNextStep)}
         >
           {metaData.finishButtonText}
