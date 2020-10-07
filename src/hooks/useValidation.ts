@@ -26,15 +26,13 @@ export const useValidation = (values: FormData) => {
 
   if (!values.contactInfo.phone) {
     errors = { ...errors, phone: 'Phone number is required' };
-  }
-
-  if (!PHONE_NUMBER_REGEX.test(values.contactInfo.phone)) {
+  } else if (!PHONE_NUMBER_REGEX.test(values.contactInfo.phone)) {
     errors = { ...errors, phone: 'Phone number is invalid' };
   }
 
   if (!values.contactInfo.organizationName) {
     errors = { ...errors, organizationName: 'Organization name is required' };
   }
-  
+
   return errors === emptyErrors ? undefined : errors;
 }

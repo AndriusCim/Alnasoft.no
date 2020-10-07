@@ -144,7 +144,7 @@ export const postForm = () => {
 }
 
 export const getData = () => {
-  const url = 'https://alnasoftno.azurewebsites.net/wp-json/form/form_fields';
+  const url = '/wp-json/form/form_fields';
   const { data, loading, error } = useApiGet<Data>(url);
 
   return {

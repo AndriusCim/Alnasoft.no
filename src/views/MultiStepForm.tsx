@@ -16,7 +16,7 @@ import { useQuickStartForm } from '../hooks/useQuickStartForm';
 import { PageType, Data } from '../api/form';
 
 const MultiStepForm: React.FC = () => {
-  const { value, loading, data, currentStep, onSubmit, change, setCurrentStep } = useQuickStartForm()
+  const { value, loading, data, submitting, currentStep, onSubmit, change, setCurrentStep } = useQuickStartForm()
 
   const getPageData = (pageType: PageType, items: Data) => {
     return items.pages.find(x => x.pageType === pageType)
@@ -63,7 +63,7 @@ const MultiStepForm: React.FC = () => {
     case 'technologies':
       return <TechnologiesForm {...props('details', 'contact', 'technologies', data)} />;
     case 'contact':
-      return <ContactForm onSubmit={onSubmit} {...props('technologies', 'complete', 'contact', data)} />;
+      return <ContactForm submitting={submitting} onSubmit={onSubmit} {...props('technologies', 'complete', 'contact', data)} />;
     case 'complete':
       return <Complete pageData={getPageData('complete', data)!} metaData={data.meta} />;
     default:

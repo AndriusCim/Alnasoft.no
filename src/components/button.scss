@@ -60,4 +60,10 @@
     color: $alna-blue;
     transition: all 0.2s;
   }
+
+  &-disabled {
+    @extend .alna-button-secondary;
+    color: $alna-dark-gray;
+    cursor: default;
+  }
 }

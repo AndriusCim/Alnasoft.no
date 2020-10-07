@@ -10,24 +10,26 @@ interface Props {
 }
 
 const Button: React.FC<Props> = ({ children, disabled = false, className = '', type = 'primary', onClick }) => {
-    if (type === 'secondary') {
-        return (
-            <div className={className}>
-                <button
-                    className="alna-button-secondary"
-                    disabled={disabled}
-                    onClick={onClick}
-                >
-                    {children}
-                </button>
-            </div>
-        )
+  const getButtonClassName = () => {
+    if (type === 'secondary' && !disabled) {
+      return 'alna-button-secondary';
     }
+
+    if (type === 'secondary' && disabled) {
+      return 'alna-button-secondary-disablded';
+    }
+
+    if (type === 'primary' && disabled) {
+      return 'alna-button-disabled';
+    }
+
+    return 'alna-button';
+  };
 
     return (
         <div className={className}>
             <button
-                className={disabled ? 'alna-button-disabled' : 'alna-button'}
+                className={getButtonClassName()}
                 disabled={disabled}
                 onClick={onClick}
             >

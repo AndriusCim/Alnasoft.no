@@ -19,6 +19,16 @@
     border: none;
     border-bottom: 1px solid black;
     transition: $alna-transition;
+
+    &-disabled {
+      @extend .alna-input-contact;
+      color: $alna-dark-gray;
+    }
+  }
+
+  &-disabled {
+    @extend .alna-input;
+    color: $alna-dark-gray;
   }
 
   &:hover {
