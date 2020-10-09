@@ -65,5 +65,10 @@
     @extend .alna-button-secondary;
     color: $alna-dark-gray;
     cursor: default;
+
+    &:hover {
+      color: $alna-dark-gray;
+      cursor: default;
+    }
   }
 }

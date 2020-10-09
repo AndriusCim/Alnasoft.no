@@ -110,7 +110,7 @@ const ContactForm: React.FC<Props> = ({ pageData, metaData, value, submitting, o
           {submitting
             ?
             (
-              <ImSpinner8 className="alna-mr-30 .icon-spin" size={20} />
+              <ImSpinner8 className="icon-spin" size={20} />
             )
             :
             (

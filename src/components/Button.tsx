@@ -16,7 +16,7 @@ const Button: React.FC<Props> = ({ children, disabled = false, className = '', t
     }
 
     if (type === 'secondary' && disabled) {
-      return 'alna-button-secondary-disablded';
+      return 'alna-button-secondary-disabled';
     }
 
     if (type === 'primary' && disabled) {
