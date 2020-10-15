@@ -6,6 +6,7 @@ import Button from '../components/Button';
 import Input from '../components/Input';
 import Summary from '../components/Summary';
 import StepCounter from '../components/StepCounter';
+import Img from '../styles/images/robo-1.svg'
 
 interface Props {
   pageData: Page;
@@ -24,7 +25,7 @@ const NameForm: React.FC<Props> = ({ pageData, metaData, value, onChange, onNext
         current="01"
       />
 
-      <div className="alna-mt-20 alna-img alna-robot-name-img" />
+      <Img style={{ overflow: 'visible' }}/>
 
       <Summary
         className="alna-mt-20"

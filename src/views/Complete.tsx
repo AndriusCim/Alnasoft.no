@@ -2,6 +2,7 @@ import React from 'react';
 import { Meta, Page } from '../api/form';
 import Button from '../components/Button';
 import Summary from '../components/Summary';
+import Img from '../styles/images/robo-10.svg';
 
 interface Props {
   pageData: Page;
@@ -11,7 +12,8 @@ interface Props {
 const ContactForm: React.FC<Props> = ({ metaData, pageData }) => {
   return (
     <div className="alna-form alna-mt-84">
-      <div className="alna-mt-20 alna-img alna-robot-complete-img" />
+
+      <Img style={{ overflow: 'visible' }} />
 
       <Summary
         className="alna-mt-20"
@@ -23,9 +25,9 @@ const ContactForm: React.FC<Props> = ({ metaData, pageData }) => {
 
       <div className="alna-footer">
         <Button
-          onClick={() => window.open('alnasoft.no', '_self')}
+          onClick={() => window.open(window.location.origin, '_self')}
         >
-          {metaData.finishButtonText}
+          {metaData.exitButtonText}
         </Button>
       </div>
     </div>

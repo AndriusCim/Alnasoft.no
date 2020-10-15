@@ -7,6 +7,7 @@ import CheckButton from '../components/CheckButton';
 import Input from '../components/Input';
 import Summary from '../components/Summary';
 import StepCounter from '../components/StepCounter';
+import Img from '../styles/images/robo-4.svg'
 
 interface Props {
   pageData: Page;
@@ -34,7 +35,7 @@ const BusinessAreaForm: React.FC<Props> = ({ pageData, metaData, value, onChange
         current="04"
       />
 
-      <div className="alna-mt-20 alna-img alna-robot-business-img" style={{ height: 230 }} />
+      <Img style={{ overflow: 'visible' }} />
 
       <Summary
         className="alna-mt-20"

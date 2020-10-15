@@ -7,6 +7,7 @@ import Carousel from '../components/Carousel';
 import Input from '../components/Input';
 import Summary from '../components/Summary';
 import StepCounter from '../components/StepCounter';
+import Img from '../styles/images/robo-6.svg'
 
 interface Props {
   pageData: Page;
@@ -26,7 +27,7 @@ const GoalForm: React.FC<Props> = ({ pageData, metaData, value, onChange, onNext
         current="06"
       />
 
-      <div className="alna-mt-20 alna-img alna-robot-goal-img" />
+      <Img style={{ overflow: 'visible' }} />
 
       <Summary
         className="alna-mt-20"

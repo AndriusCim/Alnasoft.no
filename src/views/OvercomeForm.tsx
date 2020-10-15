@@ -7,6 +7,7 @@ import Carousel from '../components/Carousel';
 import Input from '../components/Input';
 import Summary from '../components/Summary';
 import StepCounter from '../components/StepCounter';
+import Img from '../styles/images/robo-5.svg'
 
 interface Props {
   pageData: Page;
@@ -26,7 +27,7 @@ const OvercomeForm: React.FC<Props> = ({ pageData, metaData, value, onChange, on
         current="05"
       />
 
-      <div className="alna-mt-20 alna-img alna-robot-overcome-img" />
+      <Img style={{ overflow: 'visible' }} />
 
       <Summary
         className="alna-mt-20"

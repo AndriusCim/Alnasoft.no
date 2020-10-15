@@ -9,6 +9,7 @@ import Summary from '../components/Summary';
 import StepCounter from '../components/StepCounter';
 import { getFieldByValue } from '../hooks/useQuickStartForm';
 import { useValidation } from '../hooks/useValidation';
+import Img from '../styles/images/robo-9.svg'
 
 interface Props {
   pageData: Page;
@@ -33,7 +34,7 @@ const ContactForm: React.FC<Props> = ({ pageData, metaData, value, submitting, o
         current="10"
       />
 
-      <div className="alna-mt-20 alna-img alna-robot-contact-img" />
+      <Img style={{ overflow: 'visible' }} />
 
       <Summary
         className="alna-mt-20"

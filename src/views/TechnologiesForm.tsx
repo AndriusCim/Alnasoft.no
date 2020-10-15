@@ -6,7 +6,7 @@ import Button from '../components/Button';
 import CheckButton from '../components/CheckButton';
 import Summary from '../components/Summary';
 import StepCounter from '../components/StepCounter';
-import {  } from '../hooks/useQuickStartForm';
+import Img from '../styles/images/robo-8.svg'
 
 interface Props {
   pageData: Page;
@@ -34,7 +34,7 @@ const TechnologiesForm: React.FC<Props> = ({ metaData, pageData, value, onChange
         current="09"
       />
 
-      <div className="alna-mt-20 alna-img alna-robot-tech-img" />
+      <Img style={{ overflow: 'visible' }} />
 
       <Summary
         className="alna-mt-20"

@@ -6,6 +6,7 @@ import Button from '../components/Button';
 import Slider from '../components/Slider';
 import Summary from '../components/Summary';
 import StepCounter from '../components/StepCounter';
+import Img from '../styles/images/robo-2.svg'
 
 interface Props {
   pageData: Page;
@@ -26,7 +27,7 @@ const ExperienceForm: React.FC<Props> = ({ pageData, metaData, value, onChange, 
         current="02"
       />
 
-      <div className="alna-mt-20 alna-img alna-robot-experience-img" />
+      <Img style={{ overflow: 'visible' }} />
 
       <Summary
         className="alna-mt-20"
