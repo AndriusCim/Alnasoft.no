@@ -76,9 +76,18 @@ export interface Meta {
   exitButtonText: string;
 }
 
+export interface ErrorMessages {
+  emailEmpty: string,
+  emailNotValid: string,
+  organizationEmpty: string,
+  phoneEmpty: string,
+  phoneNotValid: string,
+}
+
 export interface Data {
   pages: Page[];
   meta: Meta;
+  validationErrors: ErrorMessages;
 }
 
 export interface FormData {
