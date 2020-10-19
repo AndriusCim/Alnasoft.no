@@ -63,7 +63,7 @@ const MultiStepForm: React.FC = () => {
     case 'technologies':
       return <TechnologiesForm {...props('details', 'contact', 'technologies', data)} />;
     case 'contact':
-      return <ContactForm submitting={submitting} onSubmit={onSubmit} {...props('technologies', 'complete', 'contact', data)} />;
+      return <ContactForm errors={data.validationErrors} submitting={submitting} onSubmit={onSubmit} {...props('technologies', 'complete', 'contact', data)} />;
     case 'complete':
       return <Complete pageData={getPageData('complete', data)!} metaData={data.meta} />;
     default:

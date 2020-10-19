@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta, Page } from '../api/form';
-import Button from '../components/Button';
+import Anchor from '../components/Anchor';
 import Summary from '../components/Summary';
 import Img from '../styles/images/robo-10.svg';
 
@@ -24,11 +24,11 @@ const ContactForm: React.FC<Props> = ({ metaData, pageData }) => {
       />
 
       <div className="alna-footer">
-        <Button
-          onClick={() => window.open(window.location.origin, '_self')}
+        <Anchor
+          href={window.parent.location.href}
         >
           {metaData.exitButtonText}
-        </Button>
+        </Anchor>
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import { FormData } from '../api/form';
+import { ErrorMessages, FormData } from '../api/form';
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PHONE_NUMBER_REGEX = /^[+]?[\s./0-9]*[(]?[0-9]{1,4}[)]?[-\s./0-9]*$/;
@@ -15,23 +15,23 @@ const emptyErrors: Errors = {
   organizationName: ''
 }
 
-export const useValidation = (values: FormData) => {
+export const useValidation = (values: FormData, messages: ErrorMessages) => {
   let errors = emptyErrors;
 
   if (!values.contactInfo.email) {
-    errors = { ...errors, email: 'Email address is required' };
+    errors = { ...errors, email: messages.emailEmpty };
   } else if (!EMAIL_REGEX.test(values.contactInfo.email)) {
-    errors = { ...errors, email: 'Email address is invalid' };
+    errors = { ...errors, email: messages.emailNotValid};
   }
 
   if (!values.contactInfo.phone) {
-    errors = { ...errors, phone: 'Phone number is required' };
+    errors = { ...errors, phone: messages.phoneEmpty };
   } else if (!PHONE_NUMBER_REGEX.test(values.contactInfo.phone)) {
-    errors = { ...errors, phone: 'Phone number is invalid' };
+    errors = { ...errors, phone: messages.phoneNotValid };
   }
 
   if (!values.contactInfo.organizationName) {
-    errors = { ...errors, organizationName: 'Organization name is required' };
+    errors = { ...errors, organizationName: messages.organizationEmpty };
   }
 
   return errors === emptyErrors ? undefined : errors;

@@ -1,5 +1,9 @@
 @import "../styles/variables.scss";
 
+a {
+    text-decoration: none !important;
+}
+
 .alna-button {
   cursor: pointer;
   margin-top: 5px;

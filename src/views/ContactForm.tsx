@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { BsArrowLeft } from 'react-icons/bs';
 import { ImSpinner8 } from 'react-icons/im';
 
-import { Meta, Page, FormData, mapFormDataToModel, FormDataDto } from '../api/form';
+import { Meta, Page, ErrorMessages, FormData, mapFormDataToModel, FormDataDto } from '../api/form';
 import Button from '../components/Button';
 import Input from '../components/Input';
 import Summary from '../components/Summary';
@@ -14,6 +14,7 @@ import Img from '../styles/images/robo-9.svg'
 interface Props {
   pageData: Page;
   metaData: Meta;
+  errors: ErrorMessages;
   value: FormData;
   submitting: boolean;
   onChange: <K extends keyof FormData>(name: K, value: FormData[K]) => void
@@ -22,9 +23,9 @@ interface Props {
   onPreviousStep: () => void;
 }
 
-const ContactForm: React.FC<Props> = ({ pageData, metaData, value, submitting, onChange, onSubmit, onNextStep, onPreviousStep }) => {
+const ContactForm: React.FC<Props> = ({ pageData, metaData, errors, value, submitting, onChange, onSubmit, onNextStep, onPreviousStep }) => {
   const [anyTouched, setAnyTouched] = useState(false);
-  const errors = useValidation(value);
+  const error = useValidation(value, errors);
 
   return (
     <div className="alna-form alna-mt-84">
@@ -57,7 +58,7 @@ const ContactForm: React.FC<Props> = ({ pageData, metaData, value, submitting, o
               setAnyTouched(true);
             }}
           />
-          <div className="alna-form-error">{anyTouched && errors && errors.organizationName}</div>
+          <div className="alna-form-error">{anyTouched && error && error.organizationName}</div>
         </>
       )}
 
@@ -67,14 +68,14 @@ const ContactForm: React.FC<Props> = ({ pageData, metaData, value, submitting, o
             contact={true}
             disabled={submitting}
             value={value.contactInfo.email}
-            className="alna-mt-24 alna-width-80 alna-center"
+            className="alna-width-80 alna-center"
             placeHolder={getFieldByValue('email', pageData)!.placeholder}
             onChange={x => {
               onChange('contactInfo', { ...value.contactInfo, email: x });
               setAnyTouched(true);
             }}
           />
-          <div className="alna-form-error">{anyTouched && errors && errors.email}</div>
+          <div className="alna-form-error">{anyTouched && error && error.email}</div>
         </>
       )}
 
@@ -84,14 +85,14 @@ const ContactForm: React.FC<Props> = ({ pageData, metaData, value, submitting, o
             contact={true}
             disabled={submitting}
             value={value.contactInfo.phone}
-            className="alna-mt-24 alna-width-80 alna-center"
+            className="alna-width-80 alna-center"
             placeHolder={getFieldByValue('phone', pageData)!.placeholder}
             onChange={x => {
               onChange('contactInfo', { ...value.contactInfo, phone: x });
               setAnyTouched(true);
             }}
           />
-          <div className="alna-form-error">{anyTouched && errors && errors.phone}</div>
+          <div className="alna-form-error">{anyTouched && error && error.phone}</div>
         </>
       )}
 
@@ -105,7 +106,7 @@ const ContactForm: React.FC<Props> = ({ pageData, metaData, value, submitting, o
           {metaData.prevButtonText}
         </Button>
         <Button
-          disabled={!!errors}
+          disabled={!!error}
           onClick={() => onSubmit(mapFormDataToModel(value), onNextStep)}
         >
           {submitting

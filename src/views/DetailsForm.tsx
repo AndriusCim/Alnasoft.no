@@ -7,6 +7,18 @@ import Slider from '../components/Slider';
 import Summary from '../components/Summary';
 import StepCounter from '../components/StepCounter';
 import { getSliderByValue } from '../hooks/useQuickStartForm';
+import TimeSm from '../styles/assets/timeSm.svg';
+import TimeMd from '../styles/assets/timeMd.svg';
+import TimeLg from '../styles/assets/timeLg.svg';
+import UsersSm from '../styles/assets/usersSm.svg';
+import UsersMd from '../styles/assets/usersMd.svg';
+import UsersLg from '../styles/assets/usersLg.svg';
+import BudgetSm from '../styles/assets/budgetSm.svg';
+import BudgetMd from '../styles/assets/budgetMd.svg';
+import BudgetLg from '../styles/assets/budgetLg.svg';
+import ComplexSm from '../styles/assets/complexSm.svg';
+import ComplexMd from '../styles/assets/complexMd.svg';
+import ComplexLg from '../styles/assets/complexLg.svg';
 
 interface Props {
   pageData: Page;
@@ -22,17 +34,65 @@ const ExperienceForm: React.FC<Props> = ({ pageData, metaData, value, onChange, 
     return (100 * partialValue) / totalValue;
   }
 
-  const getDetailsImage = (className: string, value: number, totalValue: number) => {
+  const getTimeImage = (value: number, totalValue: number) => {
     const percent = Math.round(getPercentage(value, totalValue));
 
     if (percent >= 0 && percent <= 33) {
-      return `${className}-Sm`
+      return <TimeSm />
     }
     if (percent >= 34 && percent <= 66) {
-      return `${className}-Md`
+      return <TimeMd />
     }
     if (percent >= 67 && percent <= 100) {
-      return `${className}-Lg`
+      return <TimeLg />
+    }
+
+    return undefined;
+  }
+
+  const getUsersImage = (value: number, totalValue: number) => {
+    const percent = Math.round(getPercentage(value, totalValue));
+
+    if (percent >= 0 && percent <= 33) {
+      return <UsersSm />
+    }
+    if (percent >= 34 && percent <= 66) {
+      return <UsersMd />
+    }
+    if (percent >= 67 && percent <= 100) {
+      return <UsersLg />
+    }
+
+    return undefined;
+  }
+
+  const getBudgetImage = (value: number, totalValue: number) => {
+    const percent = Math.round(getPercentage(value, totalValue));
+
+    if (percent >= 0 && percent <= 33) {
+      return <BudgetSm />
+    }
+    if (percent >= 34 && percent <= 66) {
+      return <BudgetMd />
+    }
+    if (percent >= 67 && percent <= 100) {
+      return <BudgetLg />
+    }
+
+    return undefined;
+  }
+
+  const getComplexImage = (value: number, totalValue: number) => {
+    const percent = Math.round(getPercentage(value, totalValue));
+
+    if (percent >= 0 && percent <= 33) {
+      return <ComplexSm />
+    }
+    if (percent >= 34 && percent <= 66) {
+      return <ComplexMd />
+    }
+    if (percent >= 67 && percent <= 100) {
+      return <ComplexLg />
     }
 
     return undefined;
@@ -57,8 +117,8 @@ const ExperienceForm: React.FC<Props> = ({ pageData, metaData, value, onChange, 
             title={getSliderByValue('timeline', pageData)!.title}
           />
 
-          <div style={{ height: '70px' }} className="alna-center alna-mt-20">
-            <div className={getDetailsImage('alna-time', value.details.timeline, 12)} />
+          <div style={{ height: '70px' }}className="alna-center alna-mt-20">
+            {getTimeImage(value.details.timeline, 12)}
           </div>
 
           <Slider
@@ -81,7 +141,7 @@ const ExperienceForm: React.FC<Props> = ({ pageData, metaData, value, onChange, 
           />
 
           <div style={{ height: '70px' }} className="alna-center alna-mt-20">
-            <div className={getDetailsImage('alna-users', value.details.users, 5001)} />
+            {getUsersImage(value.details.users, 5001)}
           </div>
 
           <Slider
@@ -104,7 +164,7 @@ const ExperienceForm: React.FC<Props> = ({ pageData, metaData, value, onChange, 
           />
 
           <div style={{ height: '70px' }} className="alna-center alna-mt-20">
-            <div className={getDetailsImage('alna-budget', value.details.budget, 100001)} />
+            {getBudgetImage(value.details.budget, 100001)}
           </div>
 
           <Slider
@@ -127,7 +187,7 @@ const ExperienceForm: React.FC<Props> = ({ pageData, metaData, value, onChange, 
           />
 
           <div style={{ height: '70px' }} className="alna-center alna-mt-20">
-            <div className={getDetailsImage('alna-complex', value.details.complexity, 100)} />
+            {getComplexImage(value.details.complexity, 100)}
           </div>
 
           <Slider
