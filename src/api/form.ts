@@ -109,7 +109,6 @@ export interface FormDataDto {
   experience: number;
   challenges: string | undefined;
   businessArea: string;
-  otherBusinessArea: string | undefined;
   challengeOvercome: string | undefined;
   goal: string | undefined;
   solution: string | undefined;
@@ -123,12 +122,14 @@ export interface FormDataDto {
   phone: string;
 }
 
-export const mapFormDataToModel = (x: FormData): FormDataDto => ({
+export const mapFormDataToModel = (x: FormData): FormDataDto => {
+  x.businessArea.push(x.otherBusinessArea || '');
+
+  return {
   firstName: x.firstName,
   experience: x.experience,
   challenges: x.challenges,
   businessArea: x.businessArea.join(', ') || '',
-  otherBusinessArea: x.otherBusinessArea,
   challengeOvercome: x.challengeOvercome,
   goal: x.goal,
   solution: x.solution,
@@ -140,7 +141,7 @@ export const mapFormDataToModel = (x: FormData): FormDataDto => ({
   organizationName: x.contactInfo.organizationName,
   email: x.contactInfo.email,
   phone: x.contactInfo.phone
-});
+}};
 
 export const postForm = () => {
   const url = '/wp-json/contact-form-7/v1/contact-forms/692/feedback';

@@ -41,8 +41,8 @@ const ContactForm: React.FC<Props> = ({ pageData, metaData, errors, value, submi
         className="alna-mt-20"
         subTitle={`${value.firstName} ${pageData.upperTitle}`}
         title={pageData.title}
-        shadowLeft={200}
-        shadowWidth={50}
+        shadowLeft={158}
+        shadowWidth={132}
       />
 
       {getFieldByValue('organizationName', pageData) && (

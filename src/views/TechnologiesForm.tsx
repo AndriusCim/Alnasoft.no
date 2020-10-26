@@ -41,8 +41,8 @@ const TechnologiesForm: React.FC<Props> = ({ metaData, pageData, value, onChange
         subTitle={pageData.upperTitle}
         title={pageData.title}
         description={pageData.field.description}
-        shadowLeft={200}
-        shadowWidth={50}
+        shadowLeft={103}
+        shadowWidth={140}
       />
 
       <div className="alna-mt-24 alna-check-button-group">

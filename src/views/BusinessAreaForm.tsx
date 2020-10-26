@@ -42,8 +42,8 @@ const BusinessAreaForm: React.FC<Props> = ({ pageData, metaData, value, onChange
         subTitle={pageData.upperTitle}
         title={pageData.title}
         description={pageData.field.description}
-        shadowLeft={200}
-        shadowWidth={50}
+        shadowLeft={262}
+        shadowWidth={104}
       />
 
       <div className="alna-mt-24 alna-check-button-group">
