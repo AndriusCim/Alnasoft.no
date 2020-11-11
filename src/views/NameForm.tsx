@@ -31,8 +31,6 @@ const NameForm: React.FC<Props> = ({ pageData, metaData, value, onChange, onNext
         className="alna-mt-20"
         subTitle={pageData.upperTitle}
         title={pageData.title}
-        shadowLeft={200}
-        shadowWidth={50}
       />
 
       <Input

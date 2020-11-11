@@ -33,8 +33,6 @@ const GoalForm: React.FC<Props> = ({ pageData, metaData, value, onChange, onNext
         className="alna-mt-20"
         subTitle={pageData.upperTitle}
         title={pageData.title}
-        shadowLeft={213}
-        shadowWidth={75}
       />
 
       <Input

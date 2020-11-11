@@ -1,7 +1,7 @@
 @import "../styles/variables.scss";
 
 a {
-    text-decoration: none !important;
+  text-decoration: none !important;
 }
 
 .alna-button {
@@ -15,16 +15,16 @@ a {
   font-size: 15px;
   font-weight: 500;
   border: none;
-  transition: all 0.2s;
   display: flex;
   align-items: center;
   justify-content: center;
 
   &:hover {
-    width: 188px;
+    width: 186px;
     border: 2px solid white;
     outline: 1px solid black;
-    transition: all 0.2s;
+    padding: 12px 0;
+    transition: all 0.1s;
   }
 
   &-disabled {

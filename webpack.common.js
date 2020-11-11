@@ -8,7 +8,7 @@ module.exports = {
     index: './src/index.tsx',
   },
   output: {
-    filename: '[name].[contenthash].js',
+    filename: 'quickstart.js',
     path: path.resolve(__dirname, 'dist'),
   },
   resolve: {

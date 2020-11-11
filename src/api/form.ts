@@ -154,7 +154,7 @@ export const postForm = () => {
 }
 
 export const getData = () => {
-  const url = '/wp-json/form/form_fields';
+  const url = `/wp-json/form/form_fields?lang=${window.parent.document.documentElement.lang}`;
   const { data, loading, error } = useApiGet<Data>(url);
 
   return {

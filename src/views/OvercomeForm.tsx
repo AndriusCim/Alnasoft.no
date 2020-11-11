@@ -33,8 +33,6 @@ const OvercomeForm: React.FC<Props> = ({ pageData, metaData, value, onChange, on
         className="alna-mt-20"
         subTitle={pageData.upperTitle}
         title={pageData.title}
-        shadowLeft={327}
-        shadowWidth={106}
       />
 
       <Input

@@ -33,8 +33,6 @@ const ExperienceForm: React.FC<Props> = ({ pageData, metaData, value, onChange, 
         className="alna-mt-20"
         subTitle={`${pageData.upperTitle} ${value.firstName}!`}
         title={pageData.title}
-        shadowLeft={520}
-        shadowWidth={120}
       />
 
       <Slider
@@ -42,8 +40,8 @@ const ExperienceForm: React.FC<Props> = ({ pageData, metaData, value, onChange, 
         className="alna-mt-24"
         min={0}
         max={100}
-        minText="None"
-        maxText="A lot"
+        minText={pageData.field.start}
+        maxText={pageData.field.finish}
         onChange={value => onChange('experience', value)}
       />
 

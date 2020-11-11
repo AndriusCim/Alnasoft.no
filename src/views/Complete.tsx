@@ -19,8 +19,6 @@ const ContactForm: React.FC<Props> = ({ metaData, pageData }) => {
         className="alna-mt-20"
         subTitle={pageData.upperTitle}
         title={pageData.title}
-        shadowLeft={200}
-        shadowWidth={152}
       />
 
       <div className="alna-footer">
