@@ -1,26 +1,27 @@
-@import '../styles/variables.scss';
+@import "../styles/variables.scss";
 
-.alna-step-counter {
-    display: flex;
-    justify-content: center;
-    position: relative;
-    width: 79px;
-    margin-bottom: 30px;
+#alnasoft-form .alna-step-counter {
+  display: flex !important;
+  justify-content: center !important;
+  position: relative !important;
+  width: 79px !important;
+  margin-bottom: 30px !important;
 
-    &-main {
-        font-size: 65px;
-        font-weight: 500;
-        color: $alna-light-gray;
-    }
+  &-main {
+    word-break: normal !important;
+    font-size: 65px !important;
+    font-weight: 500 !important;
+    color: $alna-light-gray !important;
+  }
 
-    &-current {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        white-space: nowrap;
-        font-size: 15px;
-        font-weight: bold;
-        color: $alna-gray;
-    }
+  &-current {
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    white-space: nowrap !important;
+    font-size: 15px !important;
+    font-weight: bold !important;
+    color: $alna-gray !important;
+  }
 }

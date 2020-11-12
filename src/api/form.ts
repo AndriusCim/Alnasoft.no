@@ -105,6 +105,7 @@ export interface FormData {
 }
 
 export interface FormDataDto {
+  formLang: string;
   firstName: string | undefined;
   experience: number;
   challenges: string | undefined;
@@ -126,6 +127,7 @@ export const mapFormDataToModel = (x: FormData): FormDataDto => {
   x.businessArea.push(x.otherBusinessArea || '');
 
   return {
+  formLang: window.parent.document.documentElement.lang,
   firstName: x.firstName,
   experience: x.experience,
   challenges: x.challenges,

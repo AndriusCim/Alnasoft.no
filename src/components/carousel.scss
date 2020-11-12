@@ -1,24 +1,24 @@
 @import "../styles/variables.scss";
 
-.alna-carousel {
-  display: flex;
-  justify-content: center;
+#alnasoft-form .alna-carousel {
+  display: flex !important;
+  justify-content: center !important;
 
   &-content {
-    color: $alna-dark-gray;
-    width: 80%;
-    text-align: center;
-    margin: 0 24px;
+    color: $alna-dark-gray !important;
+    width: 80% !important;
+    text-align: center !important;
+    margin: 0 24px !important;
     
   }
 
   &-arrow {
-    color: $alna-blue;
-    transition: $alna-transition;
-    cursor: pointer;
+    color: $alna-blue !important;
+    transition: $alna-transition !important;
+    cursor: pointer !important;
 
     &:hover {
-      color: $alna-dark-blue;
+      color: $alna-dark-blue !important;
     }
   }
 }

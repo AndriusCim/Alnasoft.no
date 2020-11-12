@@ -10,10 +10,20 @@ interface Props {
 }
 
 const ContactForm: React.FC<Props> = ({ metaData, pageData }) => {
+  const getHomepageUrl = () => {
+    const currentLangCode = document.documentElement.lang;
+
+    if (currentLangCode === 'en-US') {
+      return window.location.origin;
+    }
+
+    return `${window.location.origin}/${currentLangCode}`
+  }
+
   return (
     <div className="alna-form alna-mt-84">
 
-      <Img style={{ overflow: 'visible' }} />
+      <Img className="alna-svg-large" style={{ overflow: 'visible' }} />
 
       <Summary
         className="alna-mt-20"
@@ -23,7 +33,7 @@ const ContactForm: React.FC<Props> = ({ metaData, pageData }) => {
 
       <div className="alna-footer">
         <Anchor
-          href={window.parent.location.href}
+          href={getHomepageUrl()}
         >
           {metaData.exitButtonText}
         </Anchor>

@@ -1,83 +1,92 @@
 @import "./variables.scss";
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,700");
 
-body {
+#alnasoft-form body {
   margin: 0 !important;
   font-family: "Montserrat" !important;
 }
 
-.alna-form-error {
-  min-height: 1.5em;
-  color: #ad1931;
-  font-size: 12px;
+#alnasoft-form .alna-svg-small {
+  height: 93px !important;
 }
 
-.alna-width-80 {
-  margin: 0 10px;
-  width: 100%;
-  max-width: 80%;
+#alnasoft-form .alna-svg-large {
+  height: 270px !important;
 }
 
-.alna-font-size-md {
-  font-size: 15px;
+#alnasoft-form .alna-form-error {
+  min-height: 1.5em !important;
+  color: #ad1931 !important;
+  font-size: 12px !important;
 }
 
-.alna-mt-20 {
-  margin-top: 20px;
+#alnasoft-form .alna-width-80 {
+  margin: 0 10px !important;
+  width: 100% !important;
+  max-width: 80% !important;
 }
 
-.alna-mt-24 {
-  margin-top: 24px;
+#alnasoft-form .alna-font-size-md {
+  font-size: 15px !important;
 }
 
-.alna-ml-30 {
-  margin-left: 30px;
+#alnasoft-form .alna-mt-20 {
+  margin-top: 20px !important;
 }
 
-.alna-mr-30 {
-  margin-right: 30px;
-}
-.alna-footer {
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-top: 60px;
-  display: flex;
+#alnasoft-form .alna-mt-24 {
+  margin-top: 24px !important;
 }
 
-.alna-text-align-left {
+#alnasoft-form .alna-ml-30 {
+  margin-left: 30px !important;
+}
+
+#alnasoft-form .alna-mr-30 {
+  margin-right: 30px !important;
+}
+#alnasoft-form .alna-footer {
+  justify-content: center !important;
+  flex-wrap: wrap !important;
+  margin-top: 60px !important;
+  display: flex !important;
+}
+
+#alnasoft-form .alna-text-align-left {
   text-align: left !important;
 }
 
-.alna-center {
-  display: flex;
-  justify-content: center;
+#alnasoft-form .alna-center {
+  display: flex !important;
+  justify-content: center !important;
 }
 
-.alna-check-button-group {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  max-width: 735px;
+#alnasoft-form .alna-check-button-group {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  max-width: 735px !important;
 }
 
-.alna-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 84px 20% 0 20%;
+#alnasoft-form .alna-form {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  padding: 84px 20% !important;
+  background-color: white !important;
 }
 
-.spinner {
-  color: $alna-blue;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 50px;
-  height: 50px;
-  margin: -60px 0 0 -60px;
-  -webkit-animation: spin 4s linear infinite;
-  -moz-animation: spin 4s linear infinite;
-  animation: spin 4s linear infinite;
+#alnasoft-form .spinner {
+  color: $alna-blue !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  width: 50px !important;
+  height: 50px !important;
+  margin: -60px 0 0 -60px !important;
+  -webkit-animation: spin 4s linear infinite !important;
+  -moz-animation: spin 4s linear infinite !important;
+  animation: spin 4s linear infinite !important;
 }
 @-moz-keyframes spin {
   100% {
@@ -98,14 +107,14 @@ body {
 
 @media (max-width: $screen-md-min) {
   .alna-form {
-    margin: 0 5px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    margin: 0 5px !important; 
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
   }
 }
 
-.icon-spin {
+#alnasoft-form .icon-spin {
   -webkit-animation: icon-spin 2s infinite linear;
           animation: icon-spin 2s infinite linear;
 }

@@ -1,40 +1,36 @@
 @import "../styles/variables.scss";
 
-.alna-switch {
-    display: inline-block;
-    height: 46px;
-    padding-bottom: 10px;
+#alnasoft-form .alna-switch input {
+  opacity: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  display: none !important;
 }
 
-.alna-switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
+#alnasoft-form .alna-check {
+  margin: 4px !important;
+  border: 1px solid #e2eeff !important;
+  padding: 13px 25px !important;
+  color: $alna-blue !important;
+  cursor: pointer !important;
+  background-color: #fff !important;
+  -webkit-transition: $alna-transition !important;
+  transition: $alna-transition !important;
+  font-weight: 500 !important;
+  font-size: 15px !important;
+  box-shadow: 0px 3px 6px #a5c8d2ad !important;
 }
 
-.alna-check {
-    border: 1px solid #e2eeff;
-    padding: 13px 25px;
-    color: $alna-blue;
-    cursor: pointer;
-    background-color: #fff;
-    -webkit-transition: $alna-transition;
-    transition: $alna-transition;
-    font-weight: 500;
-    font-size: 15px;
-    box-shadow: 0px 3px 6px #a5c8d2ad;
+#alnasoft-form input:checked + .alna-check {
+  color: #fff !important;
+  background-color: $alna-blue !important;
+  box-shadow: none !important;
+  border: 1px solid $alna-blue !important;
 }
 
-input:checked + .alna-check {
-    color: #fff;
-    background-color: $alna-blue;
-    box-shadow: none;
-    border: 1px solid $alna-blue;
-}
-
-input:hover + .alna-check {
-    color: #fff;
-    background-color: $alna-blue;
-    border: 1px solid $alna-blue;
-    box-shadow: 0px 3px 6px #a5c8d2ad;
+#alnasoft-form input:hover + .alna-check {
+  color: #fff !important;
+  background-color: $alna-blue !important;
+  border: 1px solid $alna-blue !important;
+  box-shadow: 0px 3px 6px #a5c8d2ad !important;
 }

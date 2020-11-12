@@ -117,7 +117,7 @@ const ExperienceForm: React.FC<Props> = ({ pageData, metaData, value, onChange, 
             title={getSliderByValue('timeline', pageData)!.title}
           />
 
-          <div style={{ height: '70px' }}className="alna-center alna-mt-20">
+          <div className="alna-center alna-mt-20 alna-svg-small">
             {getTimeImage(value.details.timeline, 12)}
           </div>
 
@@ -140,7 +140,7 @@ const ExperienceForm: React.FC<Props> = ({ pageData, metaData, value, onChange, 
             title={getSliderByValue('users', pageData)!.title}
           />
 
-          <div style={{ height: '70px' }} className="alna-center alna-mt-20">
+          <div style={{ height: '70px' }} className="alna-center alna-mt-20 alna-svg-small">
             {getUsersImage(value.details.users, 5001)}
           </div>
 
@@ -163,7 +163,7 @@ const ExperienceForm: React.FC<Props> = ({ pageData, metaData, value, onChange, 
             title={getSliderByValue('budget', pageData)!.title}
           />
 
-          <div style={{ height: '70px' }} className="alna-center alna-mt-20">
+          <div style={{ height: '70px' }} className="alna-center alna-mt-20 alna-svg-small">
             {getBudgetImage(value.details.budget, 100001)}
           </div>
 
@@ -186,7 +186,7 @@ const ExperienceForm: React.FC<Props> = ({ pageData, metaData, value, onChange, 
             title={getSliderByValue('complexity', pageData)!.title}
           />
 
-          <div style={{ height: '70px' }} className="alna-center alna-mt-20">
+          <div style={{ height: '70px' }} className="alna-center alna-mt-20 alna-svg-small">
             {getComplexImage(value.details.complexity, 100)}
           </div>
 
