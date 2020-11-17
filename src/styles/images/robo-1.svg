@@ -4,27 +4,66 @@
     /* Animation styles*/
      g#robotukas {
       transition: all 100ms linear;
+      -webkit-transition: all 100ms linear;
+   -moz-transition: all 100ms linear;
+   -o-transition: all 100ms linear;
+   -ms-transition: all 100ms linear;
     }
 
     g#ranka {
   transform-box: fill-box;
+      -webkit-transform-box: fill-box;
+   -moz-transform-box fill-box;
+   -o-transform-box: fill-box;
+   -ms-transform-box: fill-box;
       transition: all 100ms linear;
+      transition: all 100ms linear;
+      -webkit-transition: all 100ms linear;
+   -moz-transition: all 100ms linear;
+   -o-transition: all 100ms linear;
+   -ms-transition: all 100ms linear;
     }
 
     g#robo-1:hover g#ranka {
 transform-box: fill-box;
+      -webkit-transform-box: fill-box;
+   -moz-transform-box fill-box;
+   -o-transform-box: fill-box;
+   -ms-transform-box: fill-box;
       transform: rotate(10deg) translate(3px, 2px);
+      -webkit-transform: rotate(10deg) translate(3px, 2px);
+   -moz-transform: rotate(10deg) translate(3px, 2px);
+   -o-transform: rotate(10deg) translate(3px, 2px);
+   -ms-transform: rotate(10deg) translate(3px, 2px);
       transform-origin: center;
+      -webkit-transform-origin: center;
+   -moz-transform-origin: center;
+   -o-transform-origin: center;
+   -ms-transform-origin: center;
       transition: all 100ms linear;
+      transition: all 100ms linear;
+      -webkit-transition: all 100ms linear;
+   -moz-transition: all 100ms linear;
+   -o-transition: all 100ms linear;
+   -ms-transition: all 100ms linear;
     }
 
     g#robo-1:hover g#robotukas{
       transform:translatey(-10px);
       transition:all 100ms linear;
+      transition: all 100ms linear;
+      -webkit-transition: all 100ms linear;
+   -moz-transition: all 100ms linear;
+   -o-transition: all 100ms linear;
+   -ms-transition: all 100ms linear;
     }
 
     g#robo-1:hover path#seselis {
       transform: translate(7px,20px) scale(0.9);
+      -webkit-transform: translate(7px,20px) scale(0.9);
+   -moz-transform: translate(7px,20px) scale(0.9);
+   -o-transform: translate(7px,20px) scale(0.9);
+   -ms-transform: translate(7px,20px) scale(0.9);
     }
     /* Animation styles end*/
       .cls-1 {
