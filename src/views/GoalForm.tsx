@@ -4,7 +4,7 @@ import { BsArrowRight, BsArrowLeft } from 'react-icons/bs';
 import { Meta, Page, FormData } from '../api/form';
 import Button from '../components/Button';
 import Carousel from '../components/Carousel';
-import Input from '../components/Input';
+import Textarea from '../components/Textarea';
 import Summary from '../components/Summary';
 import StepCounter from '../components/StepCounter';
 import Img from '../styles/images/robo-6.svg'
@@ -35,7 +35,7 @@ const GoalForm: React.FC<Props> = ({ pageData, metaData, value, onChange, onNext
         title={pageData.title}
       />
 
-      <Input
+      <Textarea
         value={value.goal}
         className="alna-mt-24 alna-width-80 alna-center"
         placeHolder={pageData.field.placeholder}
